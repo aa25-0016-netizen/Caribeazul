@@ -1,0 +1,545 @@
+<!DOCTYPE HTML>
+<!--
+	Verti by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Reserva Aqui</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	</head>
+	<body class="is-preload no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+				<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<a href="#" class="image featured"><img src="images/caribeazul4.jpeg" alt="Logo"></a><h2>Caribe Azul</h2>
+							<span>Descansa, disfruta y vive el caribe</span>
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="index.html">Inicio</a></li>
+									<li  class="current">
+										<a href="#">Reservas</a>
+										<ul>
+											<li><a href="#">Reservar habitacion</a></li>
+											<li><a href="#">Consultar reserva</a></li>
+											<li><a href="#">Politicas de cancelacion</a></li>
+										</ul>
+									</li>
+									<li><a href="left-sidebar.html">Habitaciones</a></li>
+									<li><a href="servicios.html">Servicios</a></li>
+									<li><a href="contactanos.html">Contactanos</a></li>
+								</ul>
+							</nav>
+
+					</header>
+				</div>
+
+
+
+			<div class="box">
+
+    <header style="text-align:center;">
+        <h2>Reserva tu Habitación</h2>
+        <p>Completa el siguiente formulario para realizar tu reservación.</p>
+    </header>
+
+ <form id="formReserva" method="post" action="#" onsubmit="return confirmarReserva(event);">
+        <div class="row gtr-50">
+
+            <!-- Nombre -->
+            <div class="col-6 col-12-small">
+                <label><strong>Nombre Completo</strong></label>
+                <input type="text"
+       id="nombre"
+       name="nombre"
+       maxlength="40"
+       pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{1,40}"
+       placeholder="Ingrese su nombre completo"
+       required>
+            </div>
+
+            <!-- Nacionalidad -->
+            <div class="col-6 col-12-small">
+                <label><strong>Nacionalidad</strong></label>
+
+                <select
+                    id="nacionalidad"
+                    name="nacionalidad"
+                    onchange="cambiarDocumento()"
+                    required>
+
+                    <option value="">Seleccione una opción</option>
+                    <option value="dominicano">Dominicano</option>
+                    <option value="extranjero">Extranjero</option>
+
+                </select>
+
+            </div>
+
+            <!-- Documento -->
+            <div class="col-6 col-12-small">
+
+                <label>
+                    <strong id="lblDocumento">Documento de Identidad</strong>
+                </label>
+
+                <input
+                    type="text"
+                    id="documento"
+                    name="documento"
+                    placeholder="Seleccione primero la nacionalidad"
+                    disabled
+                    required>
+
+            </div>
+
+            <!-- Teléfono -->
+            <div class="col-6 col-12-small">
+    <label for="telefono"><strong>Teléfono</strong></label>
+
+    <input
+        type="text"
+        id="telefono"
+        name="telefono"
+        placeholder="999-999-9999"
+        maxlength="12"
+        required
+        oninput="formatoTelefono()"
+    />
+</div>
+
+            <!-- Correo -->
+            <div class="col-6 col-12-small">
+
+                <label><strong>Correo Electrónico</strong></label>
+
+               <input type="email"
+       id="correo"
+       name="correo"
+       maxlength="100"
+       placeholder="ejemplo@correo.com"
+       required>
+            </div>
+
+            <!-- Habitación -->
+            <div class="col-6 col-12-small">
+
+                <label><strong>Tipo de Habitación</strong></label>
+
+                <select id="habitacion"
+        name="habitacion"
+        onchange="calcularTotal(); validarCapacidad();"
+        required>
+
+                    <option value="">Seleccione una habitación</option>
+                    <option value="Sencilla">Habitación Sencilla</option>
+                    <option value="Doble">Habitación Doble</option>
+                    <option value="Suite">Suite</option>
+
+                </select>
+
+            </div>
+
+            <!-- Huéspedes -->
+            <div class="col-6 col-12-small">
+
+                <label><strong>Número de Huéspedes</strong></label>
+
+                <select id="personas"
+        name="personas"
+        onchange="validarCapacidad()"
+        required>
+
+                    <option value="" selected disabled>
+                        Seleccione una cantidad
+                    </option>
+
+                    <option value="1">1 Huésped</option>
+                    <option value="2">2 Huéspedes</option>
+                    <option value="3">3 Huéspedes</option>
+                    <option value="4">4 Huéspedes</option>
+                    <option value="5">5 Huéspedes</option>
+
+                </select>
+
+            </div>
+
+            <!-- Método de Pago -->
+            <div class="col-6 col-12-small">
+
+                <label><strong>Método de Pago</strong></label>
+
+                <select
+                    name="metodoPago"
+                    id="metodoPago"
+                    required>
+
+                    <option value="">Seleccione un método</option>
+                    <option value="Efectivo">💵 Efectivo</option>
+                    <option value="Tarjeta de Crédito">💳 Tarjeta</option>
+                    <option value="Transferencia">🏦 Transferencia</option>
+
+                </select>
+
+            </div>
+
+            <!-- Fecha Entrada -->
+            <div class="col-6 col-12-small">
+
+                <label><strong>📅 Fecha de Entrada</strong></label>
+
+                <input
+type="date"
+id="entrada"
+name="entrada"
+onchange="calcularTotal()"
+required>
+
+            </div>
+
+            <!-- Fecha Salida -->
+            <div class="col-6 col-12-small">
+
+                <label><strong>📅 Fecha de Salida</strong></label>
+
+                <input
+type="date"
+id="salida"
+name="salida"
+onchange="calcularTotal()"
+required>
+
+            </div>
+
+            <!-- Resumen -->
+            <div class="col-12">
+
+                <section class="box">
+
+                    <h3>Resumen de la Reserva</h3>
+
+                    <p>
+
+                        <strong>Precio por noche:</strong>
+
+                        <span id="precioNoche">RD$0.00</span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Cantidad de noches:</strong>
+
+                        <span id="cantidadNoches">0</span>
+
+                    </p>
+
+                    <hr>
+
+                    <h2>
+
+                        Total:
+
+                        <span id="totalReserva">RD$0.00</span>
+
+                    </h2>
+
+                </section>
+
+            </div>
+
+            <!-- Botones -->
+            <div class="col-12" style="text-align:center; margin-top:25px;">
+
+                <input
+                    type="submit"
+                    value="Confirmar Reservación"
+                    class="button icon solid fa-calendar-check">
+
+                <input
+                    type="reset"
+                    value="Limpiar"
+                    class="button alt">
+
+                <input
+                    type="button"
+                    value="Cancelar"
+                    class="button alt icon solid fa-times"
+                    onclick="window.location.href='index.html';">
+
+            </div>
+
+        </div>
+
+    </form>
+
+				<hr>
+
+<div id="comprobante" class="box" style="display:none; margin-top:40px;">
+
+    <header>
+        <h2>Reserva Confirmada</h2>
+        <p>Hotel Caribe Azul</p>
+    </header>
+
+    <p><strong>Código de Reserva:</strong> <span id="cCodigo"></span></p>
+
+    <p><strong>Nombre:</strong> <span id="cNombre"></span></p>
+
+    <p><strong>Documento:</strong> <span id="cDocumento"></span></p>
+
+    <p><strong>Habitación:</strong> <span id="cHabitacion"></span></p>
+
+    <p><strong>Entrada:</strong> <span id="cEntrada"></span></p>
+
+    <p><strong>Salida:</strong> <span id="cSalida"></span></p>
+
+    <p><strong>Noches:</strong> <span id="cNoches"></span></p>
+
+    <p><strong>Precio por noche:</strong> <span id="cPrecio"></span></p>
+
+    <p><strong>Total:</strong> <span id="cTotal"></span></p>
+
+    <p><strong>Método de Pago:</strong> <span id="cMetodo"></span></p>
+
+    <p><strong>Estado:</strong>
+    <span id="cEstado" style="font-weight:bold;"></span>
+</p>
+
+    </p>
+	<p><strong>Fecha de emisión:</strong> <span id="cFecha"></span></p>
+<hr>
+
+<h3 style="text-align:center;color:#0066cc;">
+Gracias por elegir Hotel Caribe Azul.
+</h3>
+
+<p style="text-align:center;">
+Su reserva ha sido registrada correctamente.
+El estado actual es:
+<strong>En espera de pago.</strong>
+</p>
+    <br>
+
+   <button
+    type="button"
+    class="button icon solid fa-print"
+    onclick="imprimirComprobante()">
+
+    Imprimir Comprobante
+
+</button>
+
+    </a>
+
+</div>
+</div>
+
+<script>
+
+function cambiarDocumento(){
+
+    let nacionalidad=document.getElementById("nacionalidad");
+    let documento=document.getElementById("documento");
+    let etiqueta=document.getElementById("lblDocumento");
+
+    documento.value="";
+	documento.disabled = false;
+
+    if(nacionalidad.value==="dominicano"){
+
+        etiqueta.innerHTML="Cédula";
+
+        documento.placeholder="000-0000000-0";
+
+        documento.maxLength=13;
+
+        documento.removeAttribute("pattern");
+
+        documento.oninput=function(){
+
+            let valor=this.value.replace(/\D/g,'');
+
+            if(valor.length>11)
+                valor=valor.substring(0,11);
+
+            if(valor.length>3)
+                valor=valor.substring(0,3)+"-"+valor.substring(3);
+
+            if(valor.length>11)
+                valor=valor.substring(0,11)+"-"+valor.substring(11);
+
+            this.value=valor;
+
+        };
+
+    }
+
+    else if(nacionalidad.value==="extranjero"){
+
+        etiqueta.innerHTML="Pasaporte";
+
+        documento.placeholder="Ej. AB123456";
+
+        documento.maxLength=15;
+
+        documento.pattern="[A-Za-z0-9]{6,15}";
+
+        documento.oninput=null;
+
+    }
+
+     else{
+
+    etiqueta.innerHTML="Documento de Identidad";
+
+    documento.placeholder="Seleccione primero la nacionalidad";
+
+    documento.value="";
+
+    documento.disabled = true;
+
+    documento.oninput=null;
+
+}
+
+}
+</script>
+								</article>
+
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="contactanos"></div>
+					<footer id="footer" class="container">
+						<div class="row">
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Links -->
+									<section class="widget links">
+										<h3>Random Stuff</h3>
+										<ul class="style2">
+											<li><a href="#">Etiam feugiat condimentum</a></li>
+											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+											<li><a href="#">Sed porttitor cras in erat nec</a></li>
+											<li><a href="#">Felis varius pellentesque potenti</a></li>
+											<li><a href="#">Nullam scelerisque blandit leo</a></li>
+										</ul>
+									</section>
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Links -->
+									<section class="widget links">
+										<h3>Random Stuff</h3>
+										<ul class="style2">
+											<li><a href="#">Etiam feugiat condimentum</a></li>
+											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+											<li><a href="#">Sed porttitor cras in erat nec</a></li>
+											<li><a href="#">Felis varius pellentesque potenti</a></li>
+											<li><a href="#">Nullam scelerisque blandit leo</a></li>
+										</ul>
+									</section>
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Links -->
+									<section class="widget links">
+										<h3>Random Stuff</h3>
+										<ul class="style2">
+											<li><a href="#">Etiam feugiat condimentum</a></li>
+											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
+											<li><a href="#">Sed porttitor cras in erat nec</a></li>
+											<li><a href="#">Felis varius pellentesque potenti</a></li>
+											<li><a href="#">Nullam scelerisque blandit leo</a></li>
+										</ul>
+									</section>
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Contact -->
+									<section class="widget contact last">
+										<h3>Contactanos</h3>
+										<ul>
+											<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=hotelcaribeazuldr@gmail.com" target="_blank" class="icon solid fa-envelope"><span class="label">Gmail</span></a></li>
+										</ul>
+										<p>Boulevard Turístico del Este,<br />
+										Punta Cana, La Altagracia,<br />
+											República Dominicana.</br>	
+										(809) 709-2063</p>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy; Caribe Azul. Todos los derechos reservados</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div>
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+             <script src="assets/js/reservacion.js"></script>
+		    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+           
+
+<script>
+
+flatpickr("#entrada",{
+    dateFormat:"d/m/Y",
+    minDate:"today",
+    animate:true
+});
+
+flatpickr("#salida",{
+    dateFormat:"d/m/Y",
+    minDate:"today",
+    animate:true
+});
+
+flatpickr("#hora",{
+    enableTime:true,
+    noCalendar:true,
+    dateFormat:"h:i K",
+    time_24hr:false
+});
+
+</script>
+
+	</body>
+</html>
