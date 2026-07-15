@@ -1,0 +1,526 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+<title>Consultar Reserva - Hotel Caribe Azul</title>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="assets/css/main.css">
+
+
+</head>
+
+
+<body class="is-preload no-sidebar">
+
+
+<div id="page-wrapper">
+
+
+<!-- HEADER -->
+
+<div id="header-wrapper">
+
+<header id="header" class="container">
+
+
+<div id="logo">
+
+<a href="#" class="image featured">
+
+<img src="images/caribeazul4.jpeg">
+
+</a>
+
+<h2>Caribe Azul</h2>
+
+<span>Descansa, disfruta y vive el Caribe</span>
+
+
+</div>
+
+
+
+<nav id="nav">
+
+<ul>
+
+
+<li>
+<a href="index.html">
+Inicio
+</a>
+</li>
+
+
+<li class="current">
+
+<a href="#">
+Reservas
+</a>
+
+
+<ul>
+
+<li>
+<a href="reservacion.html">
+Reservar habitación
+</a>
+</li>
+
+
+<li>
+<a href="consulta.html">
+Consultar reserva
+</a>
+</li>
+
+
+<li>
+<a href="politicas.html">
+Políticas de cancelación
+</a>
+</li>
+
+
+</ul>
+
+
+</li>
+
+
+
+<li>
+<a href="habitaciones.html">
+Habitaciones
+</a>
+</li>
+
+
+<li>
+<a href="servicios.html">
+Servicios
+</a>
+</li>
+
+
+<li>
+<a href="contactanos.html">
+Contáctanos
+</a>
+</li>
+
+
+</ul>
+
+</nav>
+
+
+</header>
+
+</div>
+
+
+
+
+
+<section class="box container">
+
+
+<header style="text-align:center">
+
+<h2>
+Consultar Reserva
+</h2>
+
+
+<p>
+
+Ingrese su código de reservación para consultar sus datos.
+
+</p>
+
+
+</header>
+
+
+
+
+<div class="row gtr-50">
+
+
+<div class="col-8 col-12-small">
+
+
+<label>
+
+<strong>
+Código de Reserva
+</strong>
+
+</label>
+
+
+<input 
+type="text"
+id="codigoReserva"
+placeholder="Ejemplo: RES-123456">
+
+
+</div>
+
+
+
+
+<div class="col-4 col-12-small">
+
+
+<br>
+
+
+<button 
+class="button icon solid fa-search"
+onclick="buscarReserva()">
+
+Buscar
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div id="datosReserva" 
+style="display:none;margin-top:40px;">
+
+
+<hr>
+
+
+<h3>
+Información de la Reserva
+</h3>
+
+
+
+<p>
+
+<strong>Código:</strong>
+
+<span id="codigo"></span>
+
+</p>
+
+
+<p>
+
+<strong>Nombre:</strong>
+
+<span id="nombre"></span>
+
+</p>
+
+
+
+<p>
+
+<strong>Habitación:</strong>
+
+<span id="habitacion"></span>
+
+</p>
+
+
+
+<p>
+
+<strong>Entrada:</strong>
+
+<span id="entrada"></span>
+
+</p>
+
+
+
+<p>
+
+<strong>Salida:</strong>
+
+<span id="salida"></span>
+
+</p>
+
+
+
+<p>
+
+<strong>Total:</strong>
+
+<span id="total"></span>
+
+</p>
+
+
+
+<p>
+
+<strong>Estado:</strong>
+
+<span id="estado"></span>
+
+</p>
+
+
+
+
+<br>
+
+
+
+<center>
+
+
+<button 
+class="button icon solid fa-edit"
+onclick="modificarReserva()">
+
+Modificar
+
+</button>
+
+
+
+<button 
+class="button alt icon solid fa-times"
+onclick="cancelarReserva()">
+
+Cancelar
+
+</button>
+
+
+
+
+<button 
+class="button icon solid fa-credit-card"
+onclick="pagarReserva()">
+
+Pagar ahora
+
+</button>
+
+
+</center>
+
+
+
+</div>
+
+
+
+</section>
+	
+		<div id="footer-wrapper">
+    <div id="contactanos"></div>
+
+    <footer id="footer" class="container">
+
+        <div class="row">
+
+            <!-- Hotel -->
+            <div class="col-3 col-6-medium col-12-small">
+
+                <section class="widget links">
+					<center>
+    <img src="images/caribeazul4.jpeg"
+         alt="Logo Hotel Caribe Azul"
+         style="width:140px; border-radius:10px; margin-bottom:15px;">
+</center>
+
+                    <h3>Hotel Caribe Azul</h3>
+
+                    <p>
+                        Vive una experiencia inolvidable en el corazón de
+                        Punta Cana. Disfruta de habitaciones cómodas,
+                        excelente gastronomía, playa privada y un servicio
+                        diseñado para hacer de tus vacaciones un recuerdo
+                        único.
+                    </p>
+
+                </section>
+
+            </div>
+
+            <!-- Enlaces -->
+            <div class="col-3 col-6-medium col-12-small">
+
+                <section class="widget links">
+
+                    <h3>Enlaces Rápidos</h3>
+
+                    <ul class="style2">
+
+                        <li><a href="index.html">Inicio</a></li>
+
+                        <li><a href="left-sidebar.html">Habitaciones</a></li>
+
+                        <li><a href="servicios.html">Servicios</a></li>
+
+                        <li><a href="reservacion.html">Reservar Habitación</a></li>
+
+                        <li><a href="contactanos.html">Contáctanos</a></li>
+
+                    </ul>
+
+                </section>
+
+            </div>
+
+            <!-- Información -->
+            <div class="col-3 col-6-medium col-12-small">
+
+                <section class="widget links">
+
+                    <h3>Información</h3>
+
+                    <ul class="style2">
+
+                        <li>Recepción disponible las 24 horas.</li>
+
+                        <li>Check-in: 3:00 PM</li>
+
+                        <li>Check-out: 12:00 PM</li>
+
+                        <li>WiFi gratuito en todas las áreas.</li>
+
+                        <li>Piscina, restaurante y playa privada.</li>
+
+                    </ul>
+
+                </section>
+
+            </div>
+
+            <!-- Contacto -->
+            <div class="col-3 col-6-medium col-12-small">
+
+                <section class="widget contact last">
+
+                    <h3>Contáctanos</h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="#" class="icon brands fa-facebook-f">
+                                <span class="label">Facebook</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="icon brands fa-instagram">
+                                <span class="label">Instagram</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://wa.me/18097092063"
+                               target="_blank"
+                               class="icon brands fa-whatsapp">
+                                <span class="label">WhatsApp</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hotelcaribeazuldr@gmail.com"
+                               target="_blank"
+                               class="icon solid fa-envelope">
+                                <span class="label">Correo</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <p>
+
+                        Boulevard Turístico del Este<br>
+
+                        Punta Cana, La Altagracia<br>
+
+                        República Dominicana<br><br>
+
+                       
+
+                    </p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+
+                <div id="copyright">
+
+                    <ul class="menu">
+
+                        <li>
+                            &copy; 2026 Hotel Caribe Azul. Todos los derechos reservados.
+                        </li>
+
+                        <li>
+                            Diseño y desarrollo del Sistema de Gestión Hotelera Caribe Azul.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+			</div>
+
+
+
+
+
+
+<script src="assets/js/jquery.min.js"></script>
+
+<script src="assets/js/jquery.dropotron.min.js"></script>
+
+<script src="assets/js/browser.min.js"></script>
+
+<script src="assets/js/breakpoints.min.js"></script>
+
+<script src="assets/js/util.js"></script>
+
+<script src="assets/js/main.js"></script>
+
+
+<script src="assets/js/consultar.js"></script>
+
+
+
+</body>
+
+</html>
