@@ -258,6 +258,80 @@ function confirmarReserva(event){
 
     const codigo = generarCodigo();
 
+
+// ==========================================
+// GUARDAR RESERVA TEMPORALMENTE
+// ==========================================
+
+let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+
+let nuevaReserva = {
+
+    codigo: codigo,
+
+    nombre:
+    document.getElementById("nombre").value,
+
+    documento:
+    document.getElementById("documento").value,
+
+    telefono:
+    document.getElementById("telefono").value,
+
+    correo:
+    document.getElementById("correo").value,
+
+    habitacion:
+    document.getElementById("habitacion").value,
+
+    personas:
+    document.getElementById("personas").value,
+
+    entrada:
+    document.getElementById("entrada").value,
+
+    salida:
+    document.getElementById("salida").value,
+
+    noches:
+    document.getElementById("cantidadNoches").textContent,
+
+    precio:
+    document.getElementById("precioNoche").textContent,
+
+    total:
+    document.getElementById("totalReserva").textContent,
+
+    metodoPago:
+    document.getElementById("metodoPago").value,
+
+    estado:
+    "En espera de pago",
+
+    fecha:
+    new Date().toLocaleString("es-DO")
+
+};
+
+
+reservas.push(nuevaReserva);
+
+
+localStorage.setItem(
+    "reservas",
+    JSON.stringify(reservas)
+);
+
+
+// Mostrar comprobante
+
+document.getElementById("cCodigo").textContent = codigo;
+
+
+document.getElementById("cNombre").textContent =
+    document.getElementById("nombre").value;
+
     document.getElementById("cCodigo").textContent = codigo;
 
     document.getElementById("cNombre").textContent =

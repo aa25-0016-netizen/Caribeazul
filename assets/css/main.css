@@ -2802,3 +2802,65 @@ select:focus {
     border-color: #0077cc;
     box-shadow: 0 0 8px rgba(0,119,204,.3);
 }
+.slider{
+    position:relative;
+    width:70%;      /* Antes era 100% */
+    margin:0 auto;  /* Centra el carrusel */
+}
+
+.slider img{
+    width:100%;
+    height:420px;   /* Ajusta la altura */
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.prev,
+.next{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    background:rgba(0,0,0,.6);
+
+    color:white;
+
+    border:none;
+
+    padding:15px 18px;
+
+    cursor:pointer;
+
+    font-size:28px;
+
+    border-radius:50%;
+
+    transition:.3s;
+
+}
+
+.prev:hover,
+.next:hover{
+
+    background:#0077b6;
+
+}
+
+.prev{
+
+    left:10px;
+
+}
+
+.next{
+
+    right:10px;
+
+}
+.prev,
+.next{
+    z-index: 1000;
+}
